@@ -9,6 +9,8 @@ const withMDX = mdx({
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
+  // Cache le badge "N" de Next.js en bas à gauche (visible seulement en développement)
+  devIndicators: false,
   images: {
     remotePatterns: [
       {

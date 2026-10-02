@@ -1,0 +1,573 @@
+/* Toute la console est dimensionnée en "em" à partir de --u :
+   elle garde ses proportions sur mobile comme sur grand écran. */
+.stage {
+  --u: calc(min(92vw, 560px, (100svh - 150px) * 0.93) / 40);
+
+  --shell: #cdc4e6;
+  --shell-hi: #ddd6f0;
+  --shell-lo: #a99fcf;
+  --hinge: #6b628f;
+  --ink: #1d1a33;
+  --paper: #ece8d8;
+  --graphite: #2a2838;
+  --key: #4a4668;
+  --focus: #7a6cff;
+
+  font-size: var(--u);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 0;
+}
+
+/* ---------- Console et ouverture du clapet ---------- */
+
+.console {
+  position: relative;
+  width: 40em;
+  perspective: 100em;
+  /* Fermée, la console est recentrée dans l'espace de la console ouverte */
+  transform: translateY(-11em);
+  transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.console[data-open="true"] {
+  transform: none;
+}
+
+.console[data-open="false"] {
+  cursor: pointer;
+}
+
+.console:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 0.6em;
+  border-radius: 2em;
+}
+
+.lid {
+  position: relative;
+  z-index: 2;
+  height: 21.2em;
+  /* Pivot au milieu de la charnière */
+  transform-origin: 50% calc(100% + 0.45em);
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.console[data-open="false"] .lid {
+  transform: rotateX(-180deg);
+}
+
+.hinge {
+  position: relative;
+  z-index: 1;
+  width: 62%;
+  height: 0.9em;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #8b82b3, var(--hinge));
+  transition: opacity 0.3s;
+}
+
+.console[data-open="false"] .hinge {
+  opacity: 0;
+}
+
+/* ---------- Boîtier ---------- */
+
+.shell {
+  background: linear-gradient(170deg, var(--shell-hi), var(--shell) 45%, var(--shell-lo));
+  box-shadow:
+    inset 0 0.15em 0 rgba(255, 255, 255, 0.55),
+    inset 0 -0.2em 0.5em rgba(145, 83, 67, 0.25),
+    0 1.4em 2.2em -1em rgba(24, 18, 52, 0.55);
+}
+
+.lidFront,
+.lidBack {
+  position: absolute;
+  inset: 0;
+  border-radius: 2.6em 2.6em 0.7em 0.7em;
+  backface-visibility: hidden;
+}
+
+.lidFront {
+  display: grid;
+  grid-template-columns: 5.2em 1fr 5.2em;
+  column-gap: 1.2em;
+  align-items: center;
+  padding: 1.6em;
+  box-sizing: border-box;
+}
+
+.lidBack {
+  transform: rotateX(180deg);
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.6em;
+  color: var(--ink);
+}
+
+.backName {
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.backHint {
+  font-size: max(11px, 0.8em);
+}
+
+.baseWrap {
+  position: relative;
+  z-index: 1;
+}
+
+.base {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  height: 21.2em;
+  padding: 1.6em;
+  display: grid;
+  grid-template-columns: 5.2em 1fr 5.2em;
+  column-gap: 1.2em;
+  align-items: center;
+  border-radius: 0.7em 0.7em 2.6em 2.6em;
+}
+
+.camera {
+  position: absolute;
+  top: 0.6em;
+  left: 50%;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: -0.275em;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #5b86a8, #1b2740);
+}
+
+.speaker {
+  justify-self: center;
+  width: 4.4em;
+  height: 4.4em;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, rgba(60, 50, 100, 0.45) 0 0.13em, transparent 0.16em);
+  background-size: 0.72em 0.72em;
+}
+
+/* ---------- Écrans ---------- */
+
+.bezel {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0.8em;
+  border-radius: 1em;
+  background: var(--ink);
+  box-shadow:
+    inset 0 0 0 0.1em rgba(255, 255, 255, 0.08),
+    0 0.1em 0 rgba(255, 255, 255, 0.5);
+}
+
+.lcd {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0.9em;
+  overflow: hidden;
+  border-radius: 0.35em;
+  background: var(--paper);
+  color: var(--graphite);
+  font-size: max(11px, 0.78em);
+  line-height: 1.25;
+}
+
+/* Fines lignes d'écran LCD */
+.lcd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px);
+}
+
+.lcd p {
+  margin: 0;
+}
+
+.name {
+  font-size: 1.9em;
+  line-height: 1.05;
+  font-weight: 600;
+  margin-bottom: 0.5em !important;
+}
+
+.tagline {
+  margin-bottom: 0.9em !important;
+}
+
+.hint {
+  opacity: 0.75;
+}
+
+.band {
+  margin: -0.9em -0.9em 0.7em !important;
+  padding: 0.35em 0.7em;
+  background: var(--c);
+  color: #fff;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.role {
+  font-weight: 600;
+  margin-bottom: 0.4em !important;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.8em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  padding: 0 0.4em;
+  border: 0.12em solid currentColor;
+  border-radius: 0.2em;
+}
+
+/* ---------- Écran du bas : cartouches ---------- */
+
+.lcdList {
+  display: grid;
+  align-content: center;
+  padding: 0.6em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 2), 1fr);
+  gap: 0.4em;
+}
+
+.tile {
+  appearance: none;
+  display: grid;
+  justify-items: center;
+  gap: 0.2em;
+  padding: 0.35em;
+  border: 0.15em solid transparent;
+  border-radius: 0.3em;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tile[data-cursor="true"] {
+  border-color: var(--graphite);
+  background: rgba(42, 40, 56, 0.1);
+}
+
+.tile[aria-pressed="true"] .cart {
+  transform: translateY(-0.25em);
+}
+
+.tile:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.tileLabel {
+  font-weight: 600;
+}
+
+/* ---------- Cartouches ---------- */
+
+.cart {
+  position: relative;
+  display: block;
+  width: 2.8em;
+  height: 3em;
+  background: linear-gradient(#5a5678, #43405e);
+  border-radius: 0.3em 0.3em 0.2em 0.2em;
+  clip-path: polygon(0 0, calc(100% - 0.6em) 0, 100% 0.6em, 100% 100%, 0 100%);
+  transition: transform 0.2s;
+}
+
+.tile .cart {
+  font-size: 0.8em;
+}
+
+/* Étiquette colorée */
+.cart::before {
+  content: "";
+  position: absolute;
+  inset: 0.35em 0.3em 1em 0.3em;
+  border-radius: 0.15em;
+  background: var(--c);
+}
+
+/* Contacts */
+.cart::after {
+  content: "";
+  position: absolute;
+  left: 0.4em;
+  right: 0.4em;
+  bottom: 0.25em;
+  height: 0.35em;
+  background: repeating-linear-gradient(90deg, #2b2840 0 0.12em, transparent 0.12em 0.3em);
+}
+
+/* Cartouche qui dépasse sous la console, cachée derrière le boîtier quand elle est éjectée */
+.slotCart {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 0;
+  margin-left: -2.65em;
+  font-size: 1.9em;
+  transform: translateY(-100%);
+  transition: transform 0.55s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.slotCart[data-loaded="true"] {
+  transform: translateY(-42%);
+}
+
+/* ---------- Lancement : la cartouche s'enfonce, l'écran charge, puis la page s'ouvre ---------- */
+
+.console[data-launching="true"] {
+  pointer-events: none;
+}
+
+.console[data-launching="true"] .slotCart {
+  animation: insertCart 0.5s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+}
+
+/* Petit recul, puis la cartouche rentre entière avec un léger rebond, comme un clic */
+@keyframes insertCart {
+  0% { transform: translateY(-42%); }
+  25% { transform: translateY(-36%); }
+  85% { transform: translateY(-100%); }
+  92% { transform: translateY(-96%); }
+  100% { transform: translateY(-100%); }
+}
+
+.loading {
+  display: grid;
+  align-content: center;
+  gap: 0.6em;
+  height: 100%;
+}
+
+/* La barre démarre une fois la cartouche enfoncée et se remplit jusqu'à l'ouverture de la page */
+.progress {
+  display: block;
+  height: 0.7em;
+  border: 0.12em solid var(--graphite);
+  border-radius: 0.2em;
+  background: linear-gradient(var(--c), var(--c)) no-repeat left / 0% 100%;
+  animation: progress calc(var(--launch) - 0.5s) 0.5s steps(10) forwards;
+}
+
+@keyframes progress {
+  to { background-size: 100% 100%; }
+}
+
+/* ---------- Croix directionnelle ---------- */
+
+.dpad {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 5.2em;
+  height: 5.2em;
+  justify-self: center;
+}
+
+.dpadCenter {
+  grid-area: 2 / 2;
+  background: var(--key);
+}
+
+.dir {
+  appearance: none;
+  position: relative;
+  border: 0;
+  background: var(--key);
+  cursor: pointer;
+}
+
+.dir::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.7em;
+  height: 0.6em;
+  background: #d6d0ee;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform: rotate(var(--r, 0deg));
+}
+
+.dirUp {
+  grid-area: 1 / 2;
+  border-radius: 0.55em 0.55em 0 0;
+}
+
+.dirLeft {
+  grid-area: 2 / 1;
+  border-radius: 0.55em 0 0 0.55em;
+  --r: 270deg;
+}
+
+.dirRight {
+  grid-area: 2 / 3;
+  border-radius: 0 0.55em 0.55em 0;
+  --r: 90deg;
+}
+
+.dirDown {
+  grid-area: 3 / 2;
+  border-radius: 0 0 0.55em 0.55em;
+  --r: 180deg;
+}
+
+/* ---------- Boutons A B X Y, Start et Select ---------- */
+
+.keys {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 5.2em;
+  height: 5.2em;
+}
+
+.btn {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 50%;
+  background: var(--b);
+  color: #fff;
+  font: inherit;
+  font-size: max(10px, 0.8em);
+  font-weight: 700;
+  box-shadow: inset 0 -0.2em 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.bx {
+  grid-area: 1 / 2;
+  --b: #23766c;
+}
+
+.by {
+  grid-area: 2 / 1;
+  --b: #4a5fbf;
+}
+
+.ba {
+  grid-area: 2 / 3;
+  --b: #b93a62;
+}
+
+.bb {
+  grid-area: 3 / 2;
+  --b: #8f5e0e;
+}
+
+/* Colonne de droite : boutons puis Start / Select */
+.side {
+  display: grid;
+  gap: 1.1em;
+  justify-items: center;
+}
+
+.pills {
+  display: grid;
+  gap: 0.4em;
+  width: 100%;
+}
+
+.pill {
+  appearance: none;
+  height: 1.7em;
+  border: 0.1em solid #8d85b6;
+  border-radius: 99px;
+  background: #e6e1f5;
+  color: var(--ink);
+  font: inherit;
+  font-size: max(10px, 0.62em);
+  cursor: pointer;
+}
+
+.pill:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.dir:active,
+.btn:active,
+.pill:not(:disabled):active {
+  filter: brightness(1.2);
+}
+
+.dir:focus-visible,
+.btn:focus-visible,
+.pill:focus-visible,
+.toggle:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Bouton ouvrir / fermer ---------- */
+
+.toggle {
+  appearance: none;
+  margin-top: 4.4em;
+  padding: 0.6em 1.3em;
+  border: 2px solid currentColor;
+  border-radius: 99px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: max(14px, 1em);
+  cursor: pointer;
+}
+
+.sticker {
+  position: absolute;
+  top: 2em;
+  right: 2.5em;
+  width: 6em;
+  transform: rotate(-8deg);
+  margin-left: -2.25em;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .console,
+  .lid,
+  .hinge,
+  .slotCart,
+  .cart {
+    transition: none;
+  }
+
+  .console[data-launching="true"] .slotCart,
+  .progress {
+    animation: none;
+  }
+}
