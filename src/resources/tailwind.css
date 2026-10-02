@@ -1,0 +1,22 @@
+/* Tailwind sans son reset (preflight) : sinon il écraserait les styles de Once UI. */
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* La console DS garde son propre CSS (DSConsole.module.css) */
+@source not "../components/DSConsole";
+
+/* dark: suit le thème du site (bouton clair/sombre), pas seulement celui du système */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Couleurs du site utilisables en classes : bg-page, text-fg, text-fg-weak, bg-brand, border-line… */
+@theme inline {
+  --color-page: var(--page-background);
+  --color-surface: var(--surface-background);
+  --color-fg: var(--neutral-on-background-strong);
+  --color-fg-weak: var(--neutral-on-background-weak);
+  --color-brand: var(--brand-solid-strong);
+  --color-brand-weak: var(--brand-on-background-weak);
+  --color-accent: var(--accent-solid-strong);
+  --color-line: var(--neutral-alpha-medium);
+}

@@ -24,6 +24,22 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  // Builds Unity WebGL compressés en Brotli : le navigateur les décompresse grâce à ces en-têtes
+  async headers() {
+    const unity = (ext, type) => ({
+      source: `/games/:game/:file(.*\\.${ext}\\.br)`,
+      headers: [
+        { key: "Content-Encoding", value: "br" },
+        { key: "Content-Type", value: type },
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    });
+    return [
+      unity("wasm", "application/wasm"),
+      unity("js", "application/javascript"),
+      unity("data", "application/octet-stream"),
+    ];
+  },
 };
 
 export default withMDX(nextConfig);

@@ -1,7 +1,7 @@
 
 export const PROFILE = {
   name: "Kaci Ait Messaoud | Portfolio",
-  tagline: "Développeur jeux vidéo",
+  tagline: "Étudiant en Game Design",
 };
 
 export type Project = {
@@ -20,9 +20,9 @@ export const PROJECTS: Project[] = [
     id: "cv",
     title: "Mon CV",
     short: "CV",
-    role: "Parcours et compétences",
-    description: "Formation, expériences, compétences et contact.",
-    tags: ["Unity", "C#", "Shaders", "VFX"],
+    role: "Bachelor Game Design · e-artsup Lyon",
+    description: "Stage web chez Mediactil, BTS Communication, 3D et illustration.",
+    tags: ["Unity", "Unreal", "Blender", "Web"],
     color: "#2F2F3A",
     href: "/about", // ou "/cv.pdf" si tu déposes ton CV en PDF dans public/
   },
@@ -38,24 +38,24 @@ export const PROJECTS: Project[] = [
     href: "/work/pfe", // page du projet (ou un lien externe itch.io)
   },
   {
-    id: "p2",
-    title: "Projet 2",
-    short: "Projet 2",
-    role: "À remplacer",
-    description: "Un shader, un prototype, un jeu de game jam : à toi de choisir.",
-    tags: ["Shaders"],
+    id: "les-enquetes-toxiques",
+    title: "Les Enquêtes Toxiques",
+    short: "Enquêtes",
+    role: "Fiction interactive · Unity",
+    description: "Jouable dans le navigateur. [À REMPLIR : le concept en une phrase.]",
+    tags: ["Unity", "WebGL"],
     color: "#23766C",
-    href: "/work/projet-2", // page du projet (ou un lien externe itch.io)
+    href: "/work/les-enquetes-toxiques",
   },
   {
-    id: "p3",
-    title: "Projet 3",
-    short: "Projet 3",
-    role: "À remplacer",
-    description: "Une scène 3D, un outil, un effet que tu veux montrer.",
-    tags: ["3D"],
+    id: "bas-les-masques",
+    title: "Bas les masques",
+    short: "Masques",
+    role: "Jeu Unity",
+    description: "Jouable dans le navigateur. [À REMPLIR : le concept en une phrase.]",
+    tags: ["Unity", "WebGL"],
     color: "#8F5E0E",
-    href: "/work/projet-3", // page du projet (ou un lien externe itch.io)
+    href: "/work/bas-les-masques",
   },
   {
     id: "p4",

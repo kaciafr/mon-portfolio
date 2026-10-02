@@ -30,7 +30,14 @@ import {
   SiUnity,
   SiBlender,
   SiItchdotio,
+  SiUnrealengine,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+  SiHtml5,
+  SiCss3,
 } from "react-icons/si";
+
+import { TbBrandCSharp } from "react-icons/tb";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
 
@@ -64,6 +71,12 @@ export const iconLibrary: Record<string, IconType> = {
   unity: SiUnity,
   blender: SiBlender,
   itchio: SiItchdotio,
+  unreal: SiUnrealengine,
+  photoshop: SiAdobephotoshop,
+  illustrator: SiAdobeillustrator,
+  html: SiHtml5,
+  css: SiCss3,
+  csharp: TbBrandCSharp,
   facebook: FaFacebook,
   pinterest: FaPinterest,
   whatsapp: FaWhatsapp,

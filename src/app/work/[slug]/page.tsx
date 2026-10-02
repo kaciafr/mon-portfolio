@@ -16,6 +16,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
+import { games } from "@/resources/games";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
@@ -118,6 +119,20 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
+      {(games[post.slug] || post.metadata.link) && (
+        <Row gap="12" wrap horizontal="center">
+          {games[post.slug] && (
+            <Button href={`${work.path}/${post.slug}/play`} variant="primary" size="l" data-border="rounded" prefixIcon="rocket">
+              Jouer dans le navigateur
+            </Button>
+          )}
+          {post.metadata.link && (
+            <Button href={post.metadata.link} variant="secondary" size="l" data-border="rounded" suffixIcon="arrowUpRightFromSquare">
+              Page itch.io
+            </Button>
+          )}
+        </Row>
+      )}
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
       )}
