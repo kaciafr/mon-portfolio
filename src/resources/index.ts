@@ -8,6 +8,8 @@ export {
   blog,
   work,
   gallery,
+  web,
+  models3d,
 } from "./content";
 
 export {

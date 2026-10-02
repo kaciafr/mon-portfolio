@@ -19,6 +19,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  linkLabel?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -29,6 +30,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  linkLabel = "Jouer / lien externe",
 }) => {
   return (
     <Column fillWidth gap="m">
@@ -80,7 +82,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">Jouer / lien externe</Text>
+                  <Text variant="body-default-s">{linkLabel}</Text>
                 </SmartLink>
               )}
             </Flex>

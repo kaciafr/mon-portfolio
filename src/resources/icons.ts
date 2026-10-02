@@ -12,6 +12,8 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiPlay,
+  HiPause,
 } from "react-icons/hi2";
 
 import {
@@ -20,6 +22,8 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiCubeDuotone,
+  PiBrowserDuotone,
 } from "react-icons/pi";
 
 import {
@@ -35,6 +39,7 @@ import {
   SiAdobeillustrator,
   SiHtml5,
   SiCss3,
+  SiTailwindcss,
 } from "react-icons/si";
 
 import { TbBrandCSharp } from "react-icons/tb";
@@ -53,6 +58,10 @@ export const iconLibrary: Record<string, IconType> = {
   calendar: HiCalendarDays,
   home: PiHouseDuotone,
   gallery: PiImageDuotone,
+  cube: PiCubeDuotone,
+  web: PiBrowserDuotone,
+  play: HiPlay,
+  pause: HiPause,
   discord: FaDiscord,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
@@ -76,6 +85,7 @@ export const iconLibrary: Record<string, IconType> = {
   illustrator: SiAdobeillustrator,
   html: SiHtml5,
   css: SiCss3,
+  tailwind: SiTailwindcss,
   csharp: TbBrandCSharp,
   facebook: FaFacebook,
   pinterest: FaPinterest,

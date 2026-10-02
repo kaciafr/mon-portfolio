@@ -24,6 +24,10 @@ const LAUNCH_DELAY = 1600;
 
 const colorOf = (color: string) => ({ "--c": color }) as CSSProperties;
 
+// Couleur + illustration de l'étiquette d'une cartouche.
+const cartStyle = (p: { color: string; image?: string }) =>
+  ({ "--c": p.color, ...(p.image && { "--img": `url("${p.image}")` }) }) as CSSProperties;
+
 export default function DSConsole() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -238,7 +242,7 @@ export default function DSConsole() {
                       onClick={() => insert(i)}>
                       <span
                         className={styles.cart}
-                        style={colorOf(p.color)}
+                        style={cartStyle(p)}
                         aria-hidden
                       />
                       <span className={styles.tileLabel}>{p.short}</span>
@@ -308,7 +312,7 @@ export default function DSConsole() {
           {/* Cartouche qui dépasse de la fente */}
           <span
             className={`${styles.cart} ${styles.slotCart}`}
-            style={colorOf(lastLoaded.color)}
+            style={cartStyle(lastLoaded)}
             data-loaded={loaded !== null}
             aria-hidden
           />

@@ -128,7 +128,7 @@ export default async function Project({
           )}
           {post.metadata.link && (
             <Button href={post.metadata.link} variant="secondary" size="l" data-border="rounded" suffixIcon="arrowUpRightFromSquare">
-              Page itch.io
+              {post.metadata.tag === "web" ? "Visiter le site" : "Page itch.io"}
             </Button>
           )}
         </Row>

@@ -19,6 +19,7 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  draft?: boolean; // true = projet masqué du site
 };
 
 import { notFound } from "next/navigation";
@@ -49,6 +50,7 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    draft: data.draft === true,
   };
 
   return { metadata, content };
@@ -56,16 +58,18 @@ function readMDXFile(filePath: string) {
 
 function getMDXData(dir: string) {
   const mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file));
-    const slug = path.basename(file, path.extname(file));
+  return mdxFiles
+    .map((file) => {
+      const { metadata, content } = readMDXFile(path.join(dir, file));
+      const slug = path.basename(file, path.extname(file));
 
-    return {
-      metadata,
-      slug,
-      content,
-    };
-  });
+      return {
+        metadata,
+        slug,
+        content,
+      };
+    })
+    .filter((post) => !post.metadata.draft);
 }
 
 export function getPosts(customPath = ["", "", "", ""]) {

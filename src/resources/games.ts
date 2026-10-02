@@ -36,4 +36,14 @@ export const games: Record<string, Game> = {
       codeUrl: "src.wasm.br",
     }),
   },
+  "casa-leone": {
+    title: "Casa Leone",
+    aspectRatio: "8 / 5",
+    ...build("casa-leone", {
+      loaderUrl: "CasaLeone.loader.js",
+      dataUrl: "CasaLeone.data.br",
+      frameworkUrl: "CasaLeone.framework.js.br",
+      codeUrl: "CasaLeone.wasm.br",
+    }),
+  },
 };

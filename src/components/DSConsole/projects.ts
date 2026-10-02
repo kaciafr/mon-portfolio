@@ -1,7 +1,7 @@
 
 export const PROFILE = {
   name: "Kaci Ait Messaoud | Portfolio",
-  tagline: "Étudiant en Game Design",
+  tagline: "Développeur Unity & Web",
 };
 
 export type Project = {
@@ -13,6 +13,7 @@ export type Project = {
   tags: string[];
   color: string; 
   href?: string; 
+  image?: string; // illustration sur l'étiquette de la cartouche
 };
 
 export const PROJECTS: Project[] = [
@@ -20,32 +21,34 @@ export const PROJECTS: Project[] = [
     id: "cv",
     title: "Mon CV",
     short: "CV",
-    role: "Bachelor Game Design · e-artsup Lyon",
-    description: "Stage web chez Mediactil, BTS Communication, 3D et illustration.",
-    tags: ["Unity", "Unreal", "Blender", "Web"],
+    role: "Développeur Unity & Web · e-artsup Lyon",
+    description: "Stage chez Mediactil (GoScreen, Fitness Express), Bachelor Jeux vidéo, BTS Communication.",
+    tags: ["Unity", "C#", "Web"],
     color: "#2F2F3A",
-    href: "/about", // ou "/cv.pdf" si tu déposes ton CV en PDF dans public/
+    href: "/about",
+    image: "/images/avatar.jpg",
   },
   {
-    id: "pfe",
-    title: "Projet de fin d'études",
-    short: "PFE",
-    role: "Jeu vidéo sous Unity",
-    description:
-      "Décris ici le concept du jeu, ton rôle dans l'équipe et ce dont tu es le plus fier.",
-    tags: ["Unity", "C#"],
-    color: "#B93A62",
-    href: "/work/pfe", // page du projet (ou un lien externe itch.io)
+    id: "casa-leone",
+    title: "Casa Leone",
+    short: "Casa Leone",
+    role: "Jeu coopératif · Unity",
+    description: "Jeu à deux sur un seul clavier, sur le thème du harcèlement, avec l'association APEL du Rhône.",
+    tags: ["Unity", "C#", "WebGL"],
+    color: "#B33A3A",
+    href: "/work/casa-leone",
+    image: "/images/projects/casa-leone/cover.png",
   },
   {
     id: "les-enquetes-toxiques",
     title: "Les Enquêtes Toxiques",
     short: "Enquêtes",
     role: "Fiction interactive · Unity",
-    description: "Jouable dans le navigateur. [À REMPLIR : le concept en une phrase.]",
+    description: "Médecin légiste à Londris, autopsiez trois cadavres pour découvrir les causes de leur mort.",
     tags: ["Unity", "WebGL"],
     color: "#23766C",
     href: "/work/les-enquetes-toxiques",
+    image: "/images/projects/les-enquetes-toxiques/cover.png",
   },
   {
     id: "bas-les-masques",
@@ -56,15 +59,7 @@ export const PROJECTS: Project[] = [
     tags: ["Unity", "WebGL"],
     color: "#8F5E0E",
     href: "/work/bas-les-masques",
+    image: "/images/projects/bas-les-masques/cover.png",
   },
-  {
-    id: "p4",
-    title: "Projet 4",
-    short: "Projet 4",
-    role: "À remplacer",
-    description: "Des VFX, une démo technique, un autre jeu.",
-    tags: ["VFX"],
-    color: "#4A5FBF",
-    href: "/work/projet-4", // page du projet (ou un lien externe itch.io)
-  },
+  // Masqués pour l'instant (PFE et Projet 4) : remets-les ici quand ils seront prêts.
 ];

@@ -14,7 +14,7 @@ import {
 import { home, person, social } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://kacia.fr";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -22,6 +22,8 @@ const routes: RoutesConfig = {
   "/work": true,
   "/blog": false,
   "/gallery": false,
+  "/web": true,
+  "/3d": true,
 };
 
 const display: DisplayConfig = {

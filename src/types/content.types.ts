@@ -232,6 +232,18 @@ export interface Blog extends BasePageConfig {}
 export interface Work extends BasePageConfig {}
 
 /**
+ * Web projects page configuration.
+ * @description Lists the work projects tagged "web".
+ */
+export interface WebProjects extends BasePageConfig {}
+
+/**
+ * 3D models page configuration.
+ * @description Configuration for the 3D page (models are listed in resources/models.ts).
+ */
+export interface Models3DPage extends BasePageConfig {}
+
+/**
  * Gallery page configuration.
  * @description Configuration for the Gallery page, including metadata, navigation label, and image list.
  */
