@@ -13,9 +13,33 @@ export async function generateMetadata() {
   });
 }
 
+function QuickLinks({ size }: { size: "s" | "m" }) {
+  return (
+    <>
+      {routes["/work"] && (
+        <Button href={work.path} variant="primary" size={size} data-border="rounded" arrowIcon>
+          Tous les projets
+        </Button>
+      )}
+      <Button href={about.path} variant="secondary" size={size} data-border="rounded">
+        À propos & CV
+      </Button>
+      <Button
+        href={`mailto:${person.email}`}
+        variant="secondary"
+        size={size}
+        data-border="rounded"
+        prefixIcon="email"
+      >
+        Me contacter
+      </Button>
+    </>
+  );
+}
+
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="m" gap="xl" s={{ gap: "m" }} paddingY="12" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -46,25 +70,13 @@ export default function Home() {
       {/* 2. La console : on choisit un projet, Start ouvre sa page */}
       <DSConsole />
 
-      {/* 3. Accès directs, pour qui ne veut pas jouer */}
-      <Row gap="12" wrap horizontal="center">
-        {routes["/work"] && (
-          <Button href={work.path} variant="primary" size="m" data-border="rounded" arrowIcon>
-            Tous les projets
-          </Button>
-        )}
-        <Button href={about.path} variant="secondary" size="m" data-border="rounded">
-          À propos & CV
-        </Button>
-        <Button
-          href={`mailto:${person.email}`}
-          variant="secondary"
-          size="m"
-          data-border="rounded"
-          prefixIcon="email"
-        >
-          Me contacter
-        </Button>
+      {/* 3. Accès directs, pour qui ne veut pas jouer.
+          Sur mobile, version compacte sur une seule ligne pour rester au-dessus de la barre de navigation. */}
+      <Row gap="12" wrap horizontal="center" className="s-flex-hide">
+        <QuickLinks size="m" />
+      </Row>
+      <Row gap="8" wrap horizontal="center" className="flex-hide s-flex-show">
+        <QuickLinks size="s" />
       </Row>
 
       {/* 4. Les projets en version classique */}

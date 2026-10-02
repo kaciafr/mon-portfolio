@@ -569,6 +569,17 @@
   cursor: pointer;
 }
 
+/* Sur mobile, on resserre pour que les boutons sous la console restent au-dessus de la barre de navigation */
+@media (max-width: 600px) {
+  .stage {
+    padding-bottom: 0;
+  }
+
+  .toggle {
+    margin-top: 2.2em;
+  }
+}
+
 .sticker {
   position: absolute;
   top: 2em;
