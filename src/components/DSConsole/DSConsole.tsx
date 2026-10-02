@@ -177,7 +177,7 @@ export default function DSConsole() {
 
           {/* Dos du couvercle, visible quand la console est fermée */}
           <div className={`${styles.shell} ${styles.lidBack}`}>
-            <img src="/images/sticker.png" alt="" className={styles.sticker} />
+            <img src="/images/sticker.webp" alt="" className={styles.sticker} />
             <span className={styles.backName}>{PROFILE.name}</span>
             <span className={styles.backHint}>Touche pour ouvrir</span>
           </div>

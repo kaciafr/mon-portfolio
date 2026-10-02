@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
     tags: ["Unity", "C#", "WebGL"],
     color: "#B33A3A",
     href: "/work/casa-leone",
-    image: "/images/projects/casa-leone/cover.png",
+    image: "/images/projects/casa-leone/cover.webp",
   },
   {
     id: "les-enquetes-toxiques",
@@ -48,18 +48,18 @@ export const PROJECTS: Project[] = [
     tags: ["Unity", "WebGL"],
     color: "#23766C",
     href: "/work/les-enquetes-toxiques",
-    image: "/images/projects/les-enquetes-toxiques/cover.png",
+    image: "/images/projects/les-enquetes-toxiques/cover.webp",
   },
   {
     id: "bas-les-masques",
     title: "Bas les masques",
     short: "Masques",
     role: "Jeu Unity",
-    description: "Jouable dans le navigateur. [À REMPLIR : le concept en une phrase.]",
+    description: "Jeu de cartes solo et tactique : enchaînez les combos de couleurs pour vaincre vos ennemis. Jouable dans le navigateur.",
     tags: ["Unity", "WebGL"],
     color: "#8F5E0E",
     href: "/work/bas-les-masques",
-    image: "/images/projects/bas-les-masques/cover.png",
+    image: "/images/projects/bas-les-masques/cover.webp",
   },
   // Masqués pour l'instant (PFE et Projet 4) : remets-les ici quand ils seront prêts.
 ];
