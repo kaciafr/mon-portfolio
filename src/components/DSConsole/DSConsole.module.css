@@ -314,9 +314,14 @@
   transition: transform 0.2s;
 }
 
-/* Grandes cartouches pour bien voir l'illustration (plus petites s'il y en a beaucoup) */
+/* Grandes cartouches pour bien voir l'illustration (plus petites s'il y en a beaucoup).
+   Le texte de l'écran ne descend pas sous 11px : sur mobile, on limite donc la taille
+   des cartouches à la hauteur d'une ligne de l'écran (≈ 8.2 --u) moins le libellé. */
 .tile .cart {
-  font-size: calc(1.6em - (var(--cols, 2) - 2) * 0.4em);
+  font-size: min(
+    calc(1.6em - (var(--cols, 2) - 2) * 0.4em),
+    calc((var(--u) * 8.2 - 36px) / 4)
+  );
 }
 
 /* Étiquette : l'illustration du jeu occupe presque toute la face */
