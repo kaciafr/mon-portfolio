@@ -596,7 +596,7 @@
   left: 1.5em;
   width: 8em;
   transform: rotate(6deg);
-  margin-left: -4em;
+  margin-left: 1em;
   pointer-events: none;
 }
 
