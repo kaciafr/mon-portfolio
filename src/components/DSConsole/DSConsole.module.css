@@ -594,9 +594,9 @@
   position: absolute;
   bottom: 2.5em;
   left: 1.5em;
-  width: 7em;
+  width: 8em;
   transform: rotate(6deg);
-  margin-left: -1.75em;
+  margin-left: -4em;
   pointer-events: none;
 }
 
