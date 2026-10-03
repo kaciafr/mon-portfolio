@@ -592,9 +592,9 @@
 
 .sticker2 {
   position: absolute;
-  top: 2.5em;
-  right: 1.5em;
-  width: 4.5em;
+  bottom: 2.5em;
+  left: 1.5em;
+  width: 7em;
   transform: rotate(6deg);
   margin-left: -1.75em;
   pointer-events: none;
