@@ -12,21 +12,20 @@ import { Pixelify_Sans } from "next/font/google";
 import styles from "./DSConsole.module.css";
 import { PROFILE, PROJECTS } from "./projects";
 
-// Police pixel pour les écrans. Si elle pose problème, remplace par :
-// const pixel = { className: "" };
 const pixel = Pixelify_Sans({ subsets: ["latin"] });
 
-// 2 colonnes jusqu'à 4 cartouches, 3 au-delà pour que tout tienne sur l'écran du bas.
 const COLUMNS = PROJECTS.length > 4 ? 3 : 2;
 
-// Durée entre Start et l'ouverture de la page : la cartouche s'enfonce, puis l'écran charge.
 const LAUNCH_DELAY = 1600;
 
 const colorOf = (color: string) => ({ "--c": color }) as CSSProperties;
 
 // Couleur + illustration de l'étiquette d'une cartouche.
 const cartStyle = (p: { color: string; image?: string }) =>
-  ({ "--c": p.color, ...(p.image && { "--img": `url("${p.image}")` }) }) as CSSProperties;
+  ({
+    "--c": p.color,
+    ...(p.image && { "--img": `url("${p.image}")` }),
+  }) as CSSProperties;
 
 export default function DSConsole() {
   const router = useRouter();
@@ -69,13 +68,17 @@ export default function DSConsole() {
       window.open(href, "_blank", "noopener,noreferrer");
       return;
     }
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     router.prefetch(href);
     setLaunching(true);
-    launchTimer.current = setTimeout(() => router.push(href), reduce ? 0 : LAUNCH_DELAY);
+    launchTimer.current = setTimeout(
+      () => router.push(href),
+      reduce ? 0 : LAUNCH_DELAY,
+    );
   };
 
-  // Insérer une cartouche déjà en place la lance, comme appuyer sur Start.
   const insert = (index: number) => {
     const project = PROJECTS[index];
     if (project.id === loadedId) return launch(project.href);
@@ -141,7 +144,11 @@ export default function DSConsole() {
                       {loaded.title}
                     </p>
                     <p>Chargement…</p>
-                    <span className={styles.progress} style={colorOf(loaded.color)} aria-hidden />
+                    <span
+                      className={styles.progress}
+                      style={colorOf(loaded.color)}
+                      aria-hidden
+                    />
                   </div>
                 ) : loaded ? (
                   <>
@@ -158,7 +165,9 @@ export default function DSConsole() {
                       ))}
                     </ul>
                     {loaded.href && (
-                      <p className={styles.hint}>Start ou A pour ouvrir le projet</p>
+                      <p className={styles.hint}>
+                        Start ou A pour ouvrir le projet
+                      </p>
                     )}
                   </>
                 ) : (
@@ -175,9 +184,13 @@ export default function DSConsole() {
             <span className={styles.speaker} aria-hidden />
           </div>
 
-          {/* Dos du couvercle, visible quand la console est fermée */}
           <div className={`${styles.shell} ${styles.lidBack}`}>
             <img src="/images/sticker.webp" alt="" className={styles.sticker} />
+            <img
+              src="/images/sticker2.webp"
+              alt=""
+              className={styles.sticker2}
+            />
             <span className={styles.backName}>{PROFILE.name}</span>
             <span className={styles.backHint}>Touche pour ouvrir</span>
           </div>
@@ -185,7 +198,6 @@ export default function DSConsole() {
 
         <div className={styles.hinge} aria-hidden />
 
-        {/* Moitié basse : écran du bas, croix, boutons */}
         <div className={styles.baseWrap}>
           <div className={`${styles.shell} ${styles.base}`}>
             <div
