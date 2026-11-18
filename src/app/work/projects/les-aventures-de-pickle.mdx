@@ -1,0 +1,76 @@
+---
+title: "Les Aventures de Pickle"
+publishedAt: "2025-06-01"
+summary: "Prototype de level design réalisé à deux : un chat qui rêve d'être un tigre, et quatre salles pour tester ses mécaniques de mouvement, d'escalade, de pêche et de combat."
+images:
+  - "/images/projects/les-aventures-de-pickle/cover.webp"
+# Colle ici le lien du zip copié depuis GitHub Releases pour afficher le bouton « Télécharger » :
+download: ""
+---
+
+## Le projet
+
+*Les Aventures de Pickle le tigre de la forêt de Mortebouse* est un prototype réalisé en 2e année de Bachelor Jeux vidéo à e-artsup, avec Vivien Rohaut-Marchal. Le but de l'exercice : concevoir les mécaniques d'un personnage, les documenter précisément (entrées, conditions, feedbacks, valeurs), puis construire un niveau de test pour chacune d'elles.
+
+## Pickle
+
+Ancien chat domestique chez une vieille âme de Mortebouse, Pickle a toujours senti qu'un avenir plus sauvage l'attendait. Ce jeune chat orange s'est dessiné des rayures de tigre avec de la boue et les porte fièrement. Son but : devenir un véritable tigre.
+
+![Fiche personnage de Pickle : recherches de couleurs, modèle 3D et gabarit de 1 m de haut](/images/projects/les-aventures-de-pickle/pickle.webp)
+
+## Les mécaniques
+
+Pickle peut se déplacer (marcher, courir, sauter, dasher), escalader, combattre à mains nues ou avec une arme, et pêcher.
+
+![Les trois familles de mécaniques : mouvements, combats et activité](/images/projects/les-aventures-de-pickle/mecaniques.webp)
+
+Le niveau est découpé en quatre salles de 25 × 20 m, une par catégorie de mécanique.
+
+![Layout global : quatre salles pour quatre catégories de mécaniques, 54 × 50 m](/images/projects/les-aventures-de-pickle/layout.webp)
+
+## Mouvement
+
+Marche à 3,5 m/s avec ZQSD, course à 7 m/s avec Shift, saut de 50 cm avec Espace, et dash de 5 m (double Z, 1 s de recharge).
+
+![Fiche du dash et du saut : distances, entrées et temps de recharge](/images/projects/les-aventures-de-pickle/mouvement-dash-saut.webp)
+
+La salle de mouvement fait tester chaque action : des barrières de 20 à 60 cm pour trouver la limite du saut, des escaliers espacés de 5 et 6 m pour le dash, et des arbres pour slalomer en courant.
+
+![Layout de la salle mouvement : barrières, escaliers et arbres](/images/projects/les-aventures-de-pickle/salle-mouvement.webp)
+
+## Escalade
+
+Près d'une surface couverte de mousse (détection à 50 cm), Pickle s'agrippe avec E, grimpe à 1 m/s avec ZQSD et lâche prise en réappuyant sur E.
+
+![Fiche de l'escalade : détection d'une surface agrippable](/images/projects/les-aventures-de-pickle/escalade-agripper.webp)
+
+Dans la salle d'escalade, seuls les rochers verts sont agrippables : ils servent de chemin pour atteindre les rochers plus hauts.
+
+![Layout de la salle escalade : rochers de 3 à 10 m de haut](/images/projects/les-aventures-de-pickle/salle-escalade.webp)
+
+## Pêche
+
+*Mécanique conçue par Vivien.* Canne équipée et au bord de l'eau, Pickle lance sa ligne entre 1 et 5 m. Quand le « ding » retentit, le joueur a 0,5 s pour réagir, puis maintient le clic 2 s pour ramener le poisson.
+
+![Fiche du lancer de canne : portée et conditions](/images/projects/les-aventures-de-pickle/peche-lancer.webp)
+
+![Layout de la salle pêche : deux points d'eau et le socle de la canne](/images/projects/les-aventures-de-pickle/salle-peche.webp)
+
+## Combat
+
+Griffes (2 dégâts), épée (4 dégâts) ou arc (4 dégâts, portée de 10 m). Trois attaques au corps à corps enchaînées sans pause déclenchent un combo qui double les dégâts, validé par un rugissement de tigre.
+
+![Fiche des combos : dégâts de base et dégâts de fin de combo](/images/projects/les-aventures-de-pickle/combat-combos.webp)
+
+La salle de combat propose un socle avec une épée et un arc, et des ennemis statiques. Depuis le marquage au sol, seuls les ennemis 1 et 2 sont à portée d'arc : le joueur comprend la limite des 10 m en essayant.
+
+![Layout de la salle combat : socle d'armes, marquage au sol et ennemis statiques](/images/projects/les-aventures-de-pickle/salle-combat.webp)
+
+## Crédits
+
+- **Kaci Aït-Messaoud** : game design et level design (mouvement, escalade, combat)
+- **Vivien Rohaut-Marchal** : game design et level design (pêche)
+
+## Outils
+
+Unreal Engine

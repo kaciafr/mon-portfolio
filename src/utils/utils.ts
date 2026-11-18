@@ -19,6 +19,7 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  download?: string; // lien direct vers un build à télécharger (ex. zip sur GitHub Releases)
   draft?: boolean; // true = projet masqué du site
 };
 
@@ -50,6 +51,7 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    download: data.download || "",
     draft: data.draft === true,
   };
 

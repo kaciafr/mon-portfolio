@@ -61,5 +61,16 @@ export const PROJECTS: Project[] = [
     href: "/work/bas-les-masques",
     image: "/images/projects/bas-les-masques/cover.webp",
   },
+  {
+    id: "les-aventures-de-pickle",
+    title: "Les Aventures de Pickle",
+    short: "Pickle",
+    role: "Prototype · Unreal Engine",
+    description: "Un chat qui rêve d'être un tigre : quatre salles pour tester mouvement, escalade, pêche et combat.",
+    tags: ["Unreal", "Level design"],
+    color: "#C46A1F",
+    href: "/work/les-aventures-de-pickle",
+    image: "/images/projects/les-aventures-de-pickle/cover.webp",
+  },
   // Masqués pour l'instant (PFE et Projet 4) : remets-les ici quand ils seront prêts.
 ];

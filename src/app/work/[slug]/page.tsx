@@ -119,11 +119,16 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
-      {(games[post.slug] || post.metadata.link) && (
+      {(games[post.slug] || post.metadata.link || post.metadata.download) && (
         <Row gap="12" wrap horizontal="center">
           {games[post.slug] && (
             <Button href={`${work.path}/${post.slug}/play`} variant="primary" size="l" data-border="rounded" prefixIcon="rocket">
               Jouer dans le navigateur
+            </Button>
+          )}
+          {post.metadata.download && (
+            <Button href={post.metadata.download} variant="primary" size="l" data-border="rounded" prefixIcon="download">
+              Télécharger (Windows)
             </Button>
           )}
           {post.metadata.link && (
